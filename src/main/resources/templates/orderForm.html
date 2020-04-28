@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>云Taco</title>
+</head>
+<body>
+    <form method="post" th:action="@{/orders}" th:object="${order}">
+        <h1>填写你的订单</h1>
+        <a th:href="@{/design}" id="another">重新设计</a>
+
+        <div th:if="${#fields.hasErrors()}">
+            <span class="validationError">
+                请更正以下问题，然后重新提交！
+            </span>
+        </div>
+
+        <h3>把我的Taco送到...</h3>
+        <label for="name">姓名:</label>
+        <input type="text" th:field="*{name}"/>
+        <span th:errors="*{name}"></span>
+        <br />
+
+        <label for="street">街道:</label>
+        <input type="text" th:field="*{street}"/>
+        <span th:errors="*{street}"></span>
+        <br />
+
+        <label for="city">城市:</label>
+        <input type="text" th:field="*{city}"/>
+        <span th:errors="*{city}"></span>
+        <br />
+
+        <label for="state">省:</label>
+        <input type="text" th:field="*{state}"/>
+        <span th:errors="*{state}"></span>
+        <br />
+
+        <label for="zip">邮政编码:</label>
+        <input type="text" th:field="*{zip}"/>
+        <span th:errors="*{zip}"></span>
+        <br />
+
+        <h3>我的付款方式...</h3>
+        <label for="ccNumber">信用卡号:</label>
+        <input type="text" th:field="*{ccNumber}"/>
+        <span th:errors="*{ccNumber}"></span>
+        <br />
+
+        <label for="ccExpiration">到期:</label>
+        <input type="text" th:field="*{ccExpiration}"/>
+        <span th:errors="*{ccExpiration}"></span>
+        <br />
+
+        <label for="ccCVV">CVV:</label>
+        <input type="text" th:field="*{ccCVV}"/>
+        <span th:errors="*{ccCVV}"></span>
+        <br />
+
+        <input type="submit" value="提交订单"/>
+    </form>
+</body>
+
+</html>
